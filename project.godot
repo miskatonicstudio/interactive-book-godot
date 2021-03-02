@@ -20,4 +20,4 @@ run/main_scene="res://scenes/Book.tscn"
 
 [rendering]
 
-environment/default_environment="res://default_env.tres"
+environment/default_environment="res://resources/other/default_env.tres"

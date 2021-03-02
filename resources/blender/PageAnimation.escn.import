@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/PageAnimation.escn-7f878573f450d5a93a0708f5a145143d.scn"
+path="res://.import/PageAnimation.escn-9e64b1edef5c55358254f24c561973fb.scn"
 
 [deps]
 
-source_file="res://blender/PageAnimation.escn"
-dest_files=[ "res://.import/PageAnimation.escn-7f878573f450d5a93a0708f5a145143d.scn" ]
+source_file="res://resources/blender/PageAnimation.escn"
+dest_files=[ "res://.import/PageAnimation.escn-9e64b1edef5c55358254f24c561973fb.scn" ]
 
 [params]
 

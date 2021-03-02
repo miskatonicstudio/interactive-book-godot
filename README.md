@@ -1,6 +1,6 @@
 # Interactive 3D book ![Godot v3.2](https://img.shields.io/badge/godot-v3.2-%23478cbf)
 
-![Interactive 3D book screenshot](screenshot.png)
+![Interactive 3D book screenshot](resources/other/screenshot.png)
 
 A simple 3D book with turning pages that displays the content of dynamic 2D scenes. Contains a working [Godot Engine](https://github.com/godotengine/godot) project and original [Blender](https://www.blender.org/) scene with an animated page.
 
