@@ -25,3 +25,7 @@ Feel free to investigate the code and test how this example works. If you have a
 ## Fonts
 
 The `Tuffy.ttf` font was downloaded from [Public Domain Files](http://www.publicdomainfiles.com/show_file.php?id=13486218041168) and is in public domain.
+
+## Books
+
+The book used in this project is *Outer Space #1*. It can be found on [Comic Book +](https://comicbookplus.com/?dlid=27062) and is in public domain.

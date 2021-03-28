@@ -16,7 +16,19 @@ _global_script_class_icons={
 [application]
 
 config/name="Interactive 3D book"
-run/main_scene="res://scenes/Book.tscn"
+run/main_scene="res://scenes/BookVR.tscn"
+
+[display]
+
+window/size/fullscreen=true
+
+[input]
+
+click={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
 
 [rendering]
 

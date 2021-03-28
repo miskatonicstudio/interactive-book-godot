@@ -3,8 +3,6 @@
 [ext_resource path="res://resources/fonts/Font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://scenes/Page.gd" type="Script" id=2]
 
-
-
 [node name="Page" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -23,6 +21,7 @@ __meta__ = {
 }
 
 [node name="Text" type="Label" parent="Background"]
+visible = false
 anchor_right = 1.0
 margin_bottom = 82.0
 custom_fonts/font = ExtResource( 1 )
@@ -35,6 +34,7 @@ NUMBER:"
 align = 1
 
 [node name="Number" type="Label" parent="Background"]
+visible = false
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -44,6 +44,14 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0
 "
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Texture" type="TextureRect" parent="Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
