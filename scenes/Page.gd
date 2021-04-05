@@ -13,13 +13,15 @@ func _ready():
 	number.visible = not textured
 
 
-func set_number(value):
+func set_number(page_number):
 	if textured:
-		var page_file = "res://books/outer_space_01/%d.jpg" % value
+		var page_file = "res://books/%s/%d.jpg" % [
+			global.book_name, page_number
+		]
 		if ResourceLoader.exists(page_file):
 			texture.texture = load(page_file)
 			texture.show()
 		else:
 			texture.hide()
 	else:
-		number.text = str(value) + "\n"
+		number.text = str(page_number) + "\n"

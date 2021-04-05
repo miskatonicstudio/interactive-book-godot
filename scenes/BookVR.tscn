@@ -1,34 +1,52 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scenes/BookVR.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Page.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/PageAnimation.tscn" type="PackedScene" id=3]
+[ext_resource path="res://books/outer_space_01/0.jpg" type="Texture" id=4]
+[ext_resource path="res://books/outer_space_17/0.jpg" type="Texture" id=5]
 
 [sub_resource type="SpatialMaterial" id=1]
 
 [sub_resource type="QuadMesh" id=2]
 
-[sub_resource type="ConcavePolygonShape" id=11]
+[sub_resource type="ConcavePolygonShape" id=3]
 data = PoolVector3Array( -0.5, -0.5, 0, -0.5, 0.5, 0, 0.5, 0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 0, 0.5, -0.5, 0 )
 
-[sub_resource type="SpatialMaterial" id=3]
+[sub_resource type="SpatialMaterial" id=4]
 
-[sub_resource type="QuadMesh" id=4]
+[sub_resource type="QuadMesh" id=5]
 
-[sub_resource type="ConcavePolygonShape" id=12]
+[sub_resource type="ConcavePolygonShape" id=6]
 data = PoolVector3Array( -0.5, -0.5, 0, -0.5, 0.5, 0, 0.5, 0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 0, 0.5, -0.5, 0 )
-
-[sub_resource type="SpatialMaterial" id=5]
-
-[sub_resource type="SpatialMaterial" id=6]
 
 [sub_resource type="SpatialMaterial" id=7]
 
-[sub_resource type="QuadMesh" id=8]
+[sub_resource type="SpatialMaterial" id=8]
 
 [sub_resource type="SpatialMaterial" id=9]
 
 [sub_resource type="QuadMesh" id=10]
+
+[sub_resource type="SpatialMaterial" id=11]
+
+[sub_resource type="QuadMesh" id=12]
+
+[sub_resource type="SpatialMaterial" id=13]
+params_billboard_keep_scale = true
+albedo_texture = ExtResource( 4 )
+
+[sub_resource type="QuadMesh" id=14]
+
+[sub_resource type="ConcavePolygonShape" id=15]
+data = PoolVector3Array( -0.5, -0.5, 0, -0.5, 0.5, 0, 0.5, 0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 0, 0.5, -0.5, 0 )
+
+[sub_resource type="SpatialMaterial" id=16]
+params_billboard_keep_scale = true
+albedo_texture = ExtResource( 5 )
+
+[sub_resource type="ConcavePolygonShape" id=17]
+data = PoolVector3Array( -0.5, -0.5, 0, -0.5, 0.5, 0, 0.5, 0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 0, 0.5, -0.5, 0 )
 
 [node name="BookVR" type="ARVROrigin"]
 script = ExtResource( 1 )
@@ -64,12 +82,12 @@ material/0 = null
 ]]
 
 [node name="CollisionShape" type="CollisionShape" parent="Book/Static/PageLeft/StaticBody"]
-shape = SubResource( 11 )
+shape = SubResource( 3 )
 
 [node name="PageRight" type="MeshInstance" parent="Book/Static"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0 )
-material_override = SubResource( 3 )
-mesh = SubResource( 4 )
+material_override = SubResource( 4 )
+mesh = SubResource( 5 )
 material/0 = null
 
 [node name="StaticBody" type="StaticBody" parent="Book/Static/PageRight" groups=[
@@ -77,27 +95,27 @@ material/0 = null
 ]]
 
 [node name="CollisionShape" type="CollisionShape" parent="Book/Static/PageRight/StaticBody"]
-shape = SubResource( 12 )
+shape = SubResource( 6 )
 
 [node name="Turning" parent="Book" instance=ExtResource( 3 )]
 visible = false
 
 [node name="Back" parent="Book/Turning/Page" index="1"]
-material_override = SubResource( 5 )
+material_override = SubResource( 7 )
 
 [node name="Front" parent="Book/Turning/Page" index="2"]
-material_override = SubResource( 6 )
+material_override = SubResource( 8 )
 
 [node name="PageLeft" type="MeshInstance" parent="Book/Turning"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0 )
-material_override = SubResource( 7 )
-mesh = SubResource( 8 )
+material_override = SubResource( 9 )
+mesh = SubResource( 10 )
 material/0 = null
 
 [node name="PageRight" type="MeshInstance" parent="Book/Turning"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0 )
-material_override = SubResource( 9 )
-mesh = SubResource( 10 )
+material_override = SubResource( 11 )
+mesh = SubResource( 12 )
 material/0 = null
 
 [node name="Viewport1" type="Viewport" parent="."]
@@ -147,6 +165,35 @@ render_target_v_flip = true
 
 [node name="Page" parent="Viewport6" instance=ExtResource( 2 )]
 textured = true
+
+[node name="BookSelector" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 4, -2 )
+
+[node name="OuterSpace01" type="MeshInstance" parent="BookSelector"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0 )
+material_override = SubResource( 13 )
+mesh = SubResource( 14 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="BookSelector/OuterSpace01" groups=[
+"book_title:outer_space_01",
+]]
+
+[node name="CollisionShape" type="CollisionShape" parent="BookSelector/OuterSpace01/StaticBody"]
+shape = SubResource( 15 )
+
+[node name="OuterSpace17" type="MeshInstance" parent="BookSelector"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )
+material_override = SubResource( 16 )
+mesh = SubResource( 14 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="BookSelector/OuterSpace17" groups=[
+"book_title:outer_space_17",
+]]
+
+[node name="CollisionShape" type="CollisionShape" parent="BookSelector/OuterSpace17/StaticBody"]
+shape = SubResource( 17 )
 [connection signal="animation_finished" from="Book/Turning/Page/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 
 [editable path="Book/Turning"]

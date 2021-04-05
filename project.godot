@@ -18,9 +18,9 @@ _global_script_class_icons={
 config/name="Interactive 3D book"
 run/main_scene="res://scenes/BookVR.tscn"
 
-[display]
+[autoload]
 
-window/size/fullscreen=true
+global="*res://global/global.gd"
 
 [input]
 
@@ -32,4 +32,4 @@ click={
 
 [rendering]
 
-environment/default_environment="res://resources/other/default_env.tres"
+environment/default_environment="res://resources/environments/default_env.tres"

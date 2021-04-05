@@ -45,21 +45,22 @@ func _ready():
 func _input(_event):
 	if turning_animation.is_playing():
 		return
-	if Input.is_action_just_pressed("ui_left"):
-		if current_page_number > 0:
-			turn_left()
-	if Input.is_action_just_pressed("ui_right"):
-		if current_page_number < MAX_PAGE:
-			turn_right()
 	
 	if Input.is_action_just_pressed("click"):
 		var collider = raycast.get_collider()
 		if collider:
 			for group in collider.get_groups():
-				if group.find("left") > 0 and current_page_number > 0:
+				if group.find("book_title:") >= 0:
+					var book_name = group.replace("book_title:", "")
+					global.book_name = book_name
+					update_page_number()
+					break
+				if group.find("left") >= 0 and current_page_number > 0:
 					turn_left()
-				if group.find("right") > 0 and current_page_number < MAX_PAGE:
+					break
+				if group.find("right") >= 0 and current_page_number < MAX_PAGE:
 					turn_right()
+					break
 
 
 func turn_right():
