@@ -28,4 +28,4 @@ The `Tuffy.ttf` font was downloaded from [Public Domain Files](http://www.public
 
 ## Books
 
-The books used in this project are *Outer Space #1* and *Outer Space #17*. They can be found on [Comic Book +](https://comicbookplus.com/?cid=1212) and are in public domain.
+The books used in this project are *Outer Space #1*, *Outer Space #17*, and *Outer Space #18*. They can be found on [Comic Book +](https://comicbookplus.com/?cid=1212) and are in public domain.
