@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://scenes/BookVR.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Page.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://books/outer_space_17/0.jpg" type="Texture" id=5]
 [ext_resource path="res://resources/environments/artist_workshop.jpg" type="Texture" id=6]
 [ext_resource path="res://resources/environments/fireplace.jpg" type="Texture" id=7]
+[ext_resource path="res://books/outer_space_18/0.jpg" type="Texture" id=8]
 
 [sub_resource type="SpatialMaterial" id=1]
 
@@ -54,6 +55,12 @@ albedo_texture = ExtResource( 5 )
 [sub_resource type="ConcavePolygonShape" id=17]
 data = PoolVector3Array( -0.5, -0.5, 0, -0.5, 0.5, 0, 0.5, 0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 0, 0.5, -0.5, 0 )
 
+[sub_resource type="SpatialMaterial" id=23]
+flags_unshaded = true
+params_billboard_mode = 1
+params_billboard_keep_scale = true
+albedo_texture = ExtResource( 8 )
+
 [sub_resource type="SpatialMaterial" id=18]
 flags_unshaded = true
 params_billboard_mode = 1
@@ -61,10 +68,10 @@ albedo_texture = ExtResource( 6 )
 
 [sub_resource type="QuadMesh" id=19]
 
-[sub_resource type="ConcavePolygonShape" id=21]
+[sub_resource type="ConcavePolygonShape" id=20]
 data = PoolVector3Array( -0.5, -0.5, 0, -0.5, 0.5, 0, 0.5, 0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 0, 0.5, -0.5, 0 )
 
-[sub_resource type="SpatialMaterial" id=20]
+[sub_resource type="SpatialMaterial" id=21]
 flags_unshaded = true
 params_billboard_mode = 1
 albedo_texture = ExtResource( 7 )
@@ -91,7 +98,7 @@ exclude_parent = false
 cast_to = Vector3( 0, 0, -10 )
 
 [node name="Book" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1.45758, 0.258819, 0, -0.390558, 0.965926, 0, 1.85, -1 )
+transform = Transform( 1, 0, 0, 0, 1.45758, 0.258819, 0, -0.390558, 0.965926, -0.5, 1.85, -1 )
 
 [node name="Static" type="Spatial" parent="Book"]
 
@@ -194,7 +201,7 @@ textured = true
 transform = Transform( 1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 4, -2 )
 
 [node name="OuterSpace01" type="MeshInstance" parent="BookSelector"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0 )
 material_override = SubResource( 13 )
 mesh = SubResource( 14 )
 material/0 = null
@@ -207,7 +214,6 @@ material/0 = null
 shape = SubResource( 15 )
 
 [node name="OuterSpace17" type="MeshInstance" parent="BookSelector"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )
 material_override = SubResource( 16 )
 mesh = SubResource( 14 )
 material/0 = null
@@ -217,6 +223,19 @@ material/0 = null
 ]]
 
 [node name="CollisionShape" type="CollisionShape" parent="BookSelector/OuterSpace17/StaticBody"]
+shape = SubResource( 17 )
+
+[node name="OuterSpace18" type="MeshInstance" parent="BookSelector"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0 )
+material_override = SubResource( 23 )
+mesh = SubResource( 14 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="BookSelector/OuterSpace18" groups=[
+"book_title:outer_space_18",
+]]
+
+[node name="CollisionShape" type="CollisionShape" parent="BookSelector/OuterSpace18/StaticBody"]
 shape = SubResource( 17 )
 
 [node name="BackgroundSelector" type="Spatial" parent="."]
@@ -233,11 +252,11 @@ material/0 = null
 ]]
 
 [node name="CollisionShape" type="CollisionShape" parent="BackgroundSelector/ArtistWorkshop/StaticBody"]
-shape = SubResource( 21 )
+shape = SubResource( 20 )
 
 [node name="Fireplace" type="MeshInstance" parent="BackgroundSelector"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )
-material_override = SubResource( 20 )
+material_override = SubResource( 21 )
 mesh = SubResource( 19 )
 material/0 = null
 
@@ -247,6 +266,8 @@ material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="BackgroundSelector/Fireplace/StaticBody"]
 shape = SubResource( 22 )
+
+[node name="Tween" type="Tween" parent="."]
 [connection signal="animation_finished" from="Book/Turning/Page/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 
 [editable path="Book/Turning"]

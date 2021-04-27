@@ -4,7 +4,9 @@ extends Spatial
 var current_page_number = -1
 # TODO: calculate this depending on book length
 const MAX_PAGE = 35
+const ORIGINAL_BOOK_POSITION = Vector3(0, 1.85, -1)
 
+onready var book = $Book
 # This is displayed when pages are not moving
 onready var static_page = $Book/Static
 # This is displayed when pages are moving
@@ -31,6 +33,7 @@ onready var v5 = $Viewport5
 onready var v6 = $Viewport6
 
 onready var raycast = $ARVRCamera/RayCast
+onready var tween = $Tween
 
 
 func _ready():
@@ -81,6 +84,8 @@ func turn_right():
 	static_page.hide()
 	update_page_visibility(0)
 	turning_animation.play("Turn1")
+	if current_page_number < 0:
+		center()
 
 
 func turn_left():
@@ -92,6 +97,8 @@ func turn_left():
 	static_page.hide()
 	update_page_visibility(-2)
 	turning_animation.play("Turn2")
+	if current_page_number < 2:
+		move_left()
 
 
 func update_page_number(page_offset = 0):
@@ -134,3 +141,30 @@ func update_page_visibility(offset = 0):
 		pf4.hide()
 	else:
 		pf4.show()
+
+
+func move_right():
+	tween.interpolate_property(
+		book, "translation", null,
+		ORIGINAL_BOOK_POSITION + Vector3(0.5, 0, 0),
+		1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT
+	)
+	tween.start()
+
+
+func move_left():
+	tween.interpolate_property(
+		book, "translation", null,
+		ORIGINAL_BOOK_POSITION + Vector3(-0.5, 0, 0),
+		1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT
+	)
+	tween.start()
+
+
+func center():
+	tween.interpolate_property(
+		book, "translation", null,
+		ORIGINAL_BOOK_POSITION,
+		1, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT
+	)
+	tween.start()
