@@ -43,30 +43,31 @@ func _ready():
 	update_page_number()
 	set_texture(ps1, v3)
 	set_texture(ps2, v4)
+	global.connect("switch_book", self, "_on_switch_book")
+	global.connect("switch_environment", self, "_on_switch_environment")
+
+
+func _on_switch_book(book_name):
+	global.book_name = book_name
+	update_page_number()
+
+
+func _on_switch_environment(environment_name):
+	var background_file = environment_name + "/env.hdr"
+	var default_env = load(
+		"res://resources/environments/default_env.tres"
+	)
+	default_env.background_sky.panorama = load(background_file)
 
 
 func _input(_event):
 	if turning_animation.is_playing():
 		return
 	
-	if Input.is_action_just_pressed("click"):
+	if Input.is_action_just_pressed("goat_interact"):
 		var collider = raycast.get_collider()
 		if collider:
 			for group in collider.get_groups():
-				if group.find("book_title:") == 0:
-					var book_name = group.replace("book_title:", "")
-					global.book_name = book_name
-					update_page_number()
-					break
-				if group.find("background:") == 0:
-					var background_name = group.replace("background:", "")
-					var background_file = \
-						"res://resources/environments/%s.hdr" % background_name
-					var default_env = load(
-						"res://resources/environments/default_env.tres"
-					)
-					default_env.background_sky.panorama = load(background_file)
-					break
 				if group.find("left") >= 0 and current_page_number > 0:
 					turn_left()
 					break

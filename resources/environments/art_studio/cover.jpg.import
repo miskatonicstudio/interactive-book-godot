@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/artist_workshop.jpg-c75ec1f912c7eb2192bafe55d24ebc7b.s3tc.stex"
-path.etc2="res://.import/artist_workshop.jpg-c75ec1f912c7eb2192bafe55d24ebc7b.etc2.stex"
+path.s3tc="res://.import/cover.jpg-dd16a17a7c0058fca995f88777388f83.s3tc.stex"
+path.etc2="res://.import/cover.jpg-dd16a17a7c0058fca995f88777388f83.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://resources/environments/artist_workshop.jpg"
-dest_files=[ "res://.import/artist_workshop.jpg-c75ec1f912c7eb2192bafe55d24ebc7b.s3tc.stex", "res://.import/artist_workshop.jpg-c75ec1f912c7eb2192bafe55d24ebc7b.etc2.stex" ]
+source_file="res://resources/environments/art_studio/cover.jpg"
+dest_files=[ "res://.import/cover.jpg-dd16a17a7c0058fca995f88777388f83.s3tc.stex", "res://.import/cover.jpg-dd16a17a7c0058fca995f88777388f83.etc2.stex" ]
 
 [params]
 

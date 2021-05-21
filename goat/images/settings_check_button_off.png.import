@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/artist_workshop_4k.hdr-cfcdce19795aeaf61142fa174cac2afe.stex"
+path="res://.import/settings_check_button_off.png-2ebde7a141121f655d213661879c76c8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/environments/artist_workshop_4k.hdr"
-dest_files=[ "res://.import/artist_workshop_4k.hdr-cfcdce19795aeaf61142fa174cac2afe.stex" ]
+source_file="res://goat/images/settings_check_button_off.png"
+dest_files=[ "res://.import/settings_check_button_off.png-2ebde7a141121f655d213661879c76c8.stex" ]
 
 [params]
 

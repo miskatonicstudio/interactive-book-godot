@@ -15,7 +15,7 @@ func _ready():
 
 func set_number(page_number):
 	if textured:
-		var page_file = "res://books/%s/%d.jpg" % [
+		var page_file = "%s/%d.jpg" % [
 			global.book_name, page_number
 		]
 		if ResourceLoader.exists(page_file):
