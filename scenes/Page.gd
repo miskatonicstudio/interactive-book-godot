@@ -18,8 +18,8 @@ func set_number(page_number):
 		var page_file = "%s/%d.jpg" % [
 			global.book_name, page_number
 		]
-		if ResourceLoader.exists(page_file):
-			texture.texture = load(page_file)
+		if File.new().file_exists(page_file):
+			texture.texture = global.load_image_texture(page_file)
 			texture.show()
 		else:
 			texture.hide()

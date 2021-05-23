@@ -5,8 +5,8 @@
 [ext_resource path="res://scenes/PageAnimation.tscn" type="PackedScene" id=3]
 [ext_resource path="res://goat/helper_scenes/RayCast3D.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/EnvironmentSelector.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/BookMenu.tscn" type="PackedScene" id=6]
 [ext_resource path="res://goat/main_scenes/InteractiveScreen.tscn" type="PackedScene" id=10]
-[ext_resource path="res://scenes/BookSelector.tscn" type="PackedScene" id=11]
 
 [sub_resource type="SpatialMaterial" id=1]
 
@@ -160,18 +160,18 @@ textured = true
 [node name="Tween" type="Tween" parent="."]
 
 [node name="BookSelector" parent="." instance=ExtResource( 10 )]
-transform = Transform( -1.74846e-07, 0, 4, 0, 4, 0, -4, 0, -1.74846e-07, -4, 1.85, 5.96046e-08 )
+transform = Transform( -1.74846e-07, 0, 1, 0, 4.24, 0, -4, 0, -4.37114e-08, -4, 1.85, 0 )
 unique_name = "book_selector"
-content_size = Vector2( 600, 600 )
-emission_energy = 2.0
+content_size = Vector2( 400, 424 )
+unshaded = true
 
-[node name="Content" parent="BookSelector" instance=ExtResource( 11 )]
+[node name="Content" parent="BookSelector" instance=ExtResource( 6 )]
 
 [node name="EnvironmentSelector" parent="." instance=ExtResource( 10 )]
 transform = Transform( -1.74846e-07, 0, -4, 0, 4, 0, 4, 0, -1.74846e-07, 4, 1.85, 0 )
 unique_name = "environment_selector"
 content_size = Vector2( 600, 600 )
-emission_energy = 2.0
+unshaded = true
 
 [node name="Content" parent="EnvironmentSelector" instance=ExtResource( 5 )]
 [connection signal="animation_finished" from="Book/Turning/Page/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
