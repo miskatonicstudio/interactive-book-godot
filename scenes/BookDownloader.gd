@@ -1,7 +1,7 @@
 extends Control
 
 # TODO: make this configurable
-const BOOKS_SERVER = "https://pfertyk.me/downloads/books"
+const BOOKS_SERVER = "https://miskatonicstudio.com/downloads/books"
 
 onready var books = $VBoxContainer/ScrollContainer/Books
 onready var book_template = $VBoxContainer/ScrollContainer/Books/Book
