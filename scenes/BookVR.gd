@@ -74,6 +74,11 @@ func _input(_event):
 				if group.find("right") >= 0 and current_page_number < MAX_PAGE:
 					turn_right()
 					break
+	
+	if Input.is_action_just_pressed("ui_left"):
+		turn_left()
+	if Input.is_action_just_pressed("ui_right"):
+		turn_right()
 
 
 func turn_right():
