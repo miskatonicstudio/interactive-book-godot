@@ -68,9 +68,7 @@ material_override = SubResource( 1 )
 mesh = SubResource( 2 )
 material/0 = null
 
-[node name="StaticBody" type="StaticBody" parent="Book/Static/PageLeft" groups=[
-"flip_left",
-]]
+[node name="StaticBody" type="StaticBody" parent="Book/Static/PageLeft" groups=["flip_left"]]
 
 [node name="CollisionShape" type="CollisionShape" parent="Book/Static/PageLeft/StaticBody"]
 shape = SubResource( 3 )
@@ -81,9 +79,7 @@ material_override = SubResource( 4 )
 mesh = SubResource( 5 )
 material/0 = null
 
-[node name="StaticBody" type="StaticBody" parent="Book/Static/PageRight" groups=[
-"flip_right",
-]]
+[node name="StaticBody" type="StaticBody" parent="Book/Static/PageRight" groups=["flip_right"]]
 
 [node name="CollisionShape" type="CollisionShape" parent="Book/Static/PageRight/StaticBody"]
 shape = SubResource( 6 )
@@ -174,6 +170,7 @@ content_size = Vector2( 600, 600 )
 unshaded = true
 
 [node name="Content" parent="EnvironmentSelector" instance=ExtResource( 5 )]
+
 [connection signal="animation_finished" from="Book/Turning/Page/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 
 [editable path="Book/Turning"]
