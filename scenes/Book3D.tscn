@@ -1,11 +1,12 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
-[ext_resource path="res://scenes/BookVR.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Book3D.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Page.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/PageAnimation.tscn" type="PackedScene" id=3]
-[ext_resource path="res://goat/helper_scenes/RayCast3D.tscn" type="PackedScene" id=4]
+[ext_resource path="res://goat/main_scenes/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/EnvironmentSelector.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/BookMenu.tscn" type="PackedScene" id=6]
+[ext_resource path="res://goat/main_scenes/InteractiveItem.tscn" type="PackedScene" id=7]
 [ext_resource path="res://goat/main_scenes/InteractiveScreen.tscn" type="PackedScene" id=10]
 
 [sub_resource type="SpatialMaterial" id=1]
@@ -34,28 +35,24 @@ data = PoolVector3Array( -0.5, -0.5, 0, -0.5, 0.5, 0, 0.5, 0.5, 0, -0.5, -0.5, 0
 
 [sub_resource type="QuadMesh" id=12]
 
-[node name="BookVR" type="ARVROrigin"]
+[node name="Book3D" type="Spatial"]
 script = ExtResource( 1 )
 
 [node name="OmniLight" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 3 )
 shadow_enabled = true
 shadow_bias = 0.01
+omni_range = 15.0
 omni_shadow_mode = 0
 omni_shadow_detail = 0
 
-[node name="ARVRCamera" type="ARVRCamera" parent="."]
+[node name="Player" parent="." instance=ExtResource( 4 )]
+
+[node name="Camera" parent="Player" index="1"]
 current = true
 
-[node name="RayCast" type="RayCast" parent="ARVRCamera"]
-enabled = true
-exclude_parent = false
+[node name="RayCast3D" parent="Player/Camera" index="0"]
 cast_to = Vector3( 0, 0, -10 )
-
-[node name="RayCast3D" parent="ARVRCamera" instance=ExtResource( 4 )]
-enabled = true
-cast_to = Vector3( 0, 0, -10 )
-category = "environment"
 
 [node name="Book" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1.45758, 0.258819, 0, -0.390558, 0.965926, -0.5, 1.85, -1 )
@@ -68,9 +65,13 @@ material_override = SubResource( 1 )
 mesh = SubResource( 2 )
 
 [node name="StaticBody" type="StaticBody" parent="Book/Static/PageLeft" groups=["flip_left"]]
+visible = false
 
 [node name="CollisionShape" type="CollisionShape" parent="Book/Static/PageLeft/StaticBody"]
 shape = SubResource( 3 )
+
+[node name="InteractiveItem" parent="Book/Static/PageLeft" instance=ExtResource( 7 )]
+unique_name = "flip_left"
 
 [node name="PageRight" type="MeshInstance" parent="Book/Static"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0 )
@@ -78,9 +79,13 @@ material_override = SubResource( 4 )
 mesh = SubResource( 5 )
 
 [node name="StaticBody" type="StaticBody" parent="Book/Static/PageRight" groups=["flip_right"]]
+visible = false
 
 [node name="CollisionShape" type="CollisionShape" parent="Book/Static/PageRight/StaticBody"]
 shape = SubResource( 6 )
+
+[node name="InteractiveItem" parent="Book/Static/PageRight" instance=ExtResource( 7 )]
+unique_name = "flip_right"
 
 [node name="Turning" parent="Book" instance=ExtResource( 3 )]
 visible = false
@@ -169,4 +174,5 @@ unshaded = true
 
 [connection signal="animation_finished" from="Book/Turning/Page/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 
+[editable path="Player"]
 [editable path="Book/Turning"]

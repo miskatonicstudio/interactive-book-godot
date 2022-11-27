@@ -8,6 +8,10 @@ signal switch_book (book_name)
 signal switch_environment (environment_name)
 
 
+func _ready():
+	goat.GRAVITY_ENABLED = false
+
+
 func load_image_texture(path):
 	var img = Image.new()
 	img.load(path)

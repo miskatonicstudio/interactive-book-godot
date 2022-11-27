@@ -46,13 +46,11 @@ transform = Transform( 1, 0, 0, 0, 1.5, 0, 0, 0, 1, 0, 0, 0 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0 )
 material_override = SubResource( 1 )
 mesh = SubResource( 2 )
-material/0 = null
 
 [node name="PageRight" type="MeshInstance" parent="Book/Static"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0 )
 material_override = SubResource( 3 )
 mesh = SubResource( 4 )
-material/0 = null
 
 [node name="Turning" parent="Book" instance=ExtResource( 1 )]
 visible = false
@@ -67,13 +65,11 @@ material_override = SubResource( 6 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0 )
 material_override = SubResource( 7 )
 mesh = SubResource( 8 )
-material/0 = null
 
 [node name="PageRight" type="MeshInstance" parent="Book/Turning"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0 )
 material_override = SubResource( 9 )
 mesh = SubResource( 10 )
-material/0 = null
 
 [node name="Viewport1" type="Viewport" parent="."]
 size = Vector2( 400, 600 )
@@ -116,6 +112,7 @@ usage = 0
 render_target_v_flip = true
 
 [node name="Page" parent="Viewport6" instance=ExtResource( 3 )]
+
 [connection signal="animation_finished" from="Book/Turning/Page/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 
 [editable path="Book/Turning"]

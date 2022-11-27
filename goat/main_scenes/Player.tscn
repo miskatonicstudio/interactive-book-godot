@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://goat/main_scenes/Player.gd" type="Script" id=1]
-[ext_resource path="res://goat/environments/default_environment.tres" type="Environment" id=2]
+[ext_resource path="res://resources/environments/default_env.tres" type="Environment" id=2]
 [ext_resource path="res://goat/helper_scenes/RayCast3D.tscn" type="PackedScene" id=3]
 [ext_resource path="res://goat/helper_scenes/InventoryBar.tscn" type="PackedScene" id=4]
 [ext_resource path="res://goat/helper_scenes/Inventory.tscn" type="PackedScene" id=5]
@@ -10,8 +10,8 @@
 [ext_resource path="res://goat/helper_scenes/Settings.tscn" type="PackedScene" id=8]
 
 [sub_resource type="CylinderShape" id=1]
-radius = 0.3
 height = 1.8
+radius = 0.3
 
 [node name="Player" type="KinematicBody"]
 script = ExtResource( 1 )
@@ -20,9 +20,7 @@ script = ExtResource( 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0 )
 shape = SubResource( 1 )
 
-[node name="Camera" type="Camera" parent="." groups=[
-"goat_cameras",
-]]
+[node name="Camera" type="Camera" parent="." groups=["goat_cameras"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0 )
 environment = ExtResource( 2 )
 

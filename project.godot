@@ -81,7 +81,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Interactive 3D book"
-run/main_scene="res://scenes/BookVR.tscn"
+run/main_scene="res://scenes/Book3D.tscn"
 
 [audio]
 

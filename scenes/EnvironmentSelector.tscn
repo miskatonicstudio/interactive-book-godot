@@ -9,9 +9,6 @@ margin_bottom = 200.0
 rect_min_size = Vector2( 600, 600 )
 rect_clip_content = true
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 anchor_right = 1.0
